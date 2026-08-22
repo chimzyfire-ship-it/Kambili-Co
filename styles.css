@@ -17,10 +17,14 @@ html {
   scroll-behavior: smooth;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 body {
   margin: 0;
   min-width: 320px;
+  max-width: 100%;
+  overflow-x: hidden;
   color: var(--burgundy);
   background-color: #f3ebe3;
   font-family: var(--sans);
@@ -28,7 +32,20 @@ body {
   font-weight: 400;
   letter-spacing: .01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-overflow-scrolling: touch;
+}
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+::selection {
+  background: var(--burgundy);
+  color: var(--ivory);
+}
+::-moz-selection {
+  background: var(--burgundy);
+  color: var(--ivory);
 }
 body.menu-open,
 body.is-loading,
