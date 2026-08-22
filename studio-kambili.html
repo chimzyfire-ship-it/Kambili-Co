@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Studio by Kambili creates personal, timeless interiors — from renovation and basement development to full interior design and styling." />
-    <title>Studio by Kambili — Interior Design & Styling</title>
+    <meta name="description" content="Studio Kambili creates personal, timeless interiors — from renovation and basement development to full interior design and styling." />
+    <title>Studio Kambili — Interior Design & Styling</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,35 +20,34 @@
       />
     </noscript>
     <link rel="preload" as="image" href="./img/interior-09.webp" type="image/webp" fetchpriority="high" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2.9" />
   </head>
   <body class="brand-page studio-page">
-    <a class="back-nav" href="index.html" aria-label="Back to Kambili and Co home">
-      <span class="back-nav-arrow" aria-hidden="true"></span>
-      <span class="back-nav-label">Home</span>
-    </a>
-
     <div class="lightbox" data-lightbox aria-hidden="true">
       <button class="lightbox-backdrop" type="button" data-lightbox-close aria-label="Close image"></button>
       <div class="lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
         <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close">×</button>
         <figure class="lightbox-figure">
-          <img data-lightbox-image src="" alt="" decoding="async" />
-          <figcaption>
+          <div class="lightbox-image-wrap">
+            <img data-lightbox-image src="" alt="" decoding="async" />
+          </div>
+          <figcaption class="lightbox-caption-bar">
             <p class="eyebrow" data-lightbox-tag></p>
             <h3 id="lightbox-caption" data-lightbox-title></h3>
-            <a class="hero-book-button lightbox-book" href="https://calendly.com/styledbykambili/30min?month=2026-08" target="_blank" rel="noreferrer">
-              Book a consultation
-            </a>
           </figcaption>
         </figure>
       </div>
     </div>
 
     <header class="brand-header">
-      <a class="brand-kambili-link" href="index.html">Kambili &amp; Co</a>
-      <a class="brand-title" href="studio-kambili.html"><span>Studio by</span> Kambili</a>
-      <a class="brand-book-link" href="https://calendly.com/styledbykambili/30min?month=2026-08" target="_blank" rel="noreferrer">Book a session</a>
+      <a class="brand-kambili-link" href="index.html" aria-label="Back to Kambili &amp; Co home">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <span>Home</span>
+      </a>
+      <a class="brand-title" href="studio-kambili.html"><span>Studio</span> Kambili</a>
+      <a class="brand-book-link" href="https://calendly.com/styledbykambili/30min?month=2026-08" target="_blank" rel="noreferrer">
+        <span>Book a session</span>
+      </a>
     </header>
 
     <main>
@@ -69,7 +68,7 @@
           <p class="eyebrow">The studio</p>
           <h2 id="studio-intro-title">Timeless homes, grounded in <em>the way you live now.</em></h2>
         </div>
-        <p>Studio by Kambili creates interiors with a quiet point of view — personal, deeply practical, and designed to be lived in beautifully.</p>
+        <p>Studio Kambili creates interiors with a quiet point of view — personal, deeply practical, and designed to be lived in beautifully.</p>
       </section>
 
       <section class="brand-service-list section-space" aria-labelledby="studio-services-title">
@@ -119,6 +118,16 @@
             <img src="./img/interior-03.webp" alt="Sage green bathroom with gold fixtures" width="1050" height="1400" loading="lazy" decoding="async" style="object-position: 50% 40%" />
             <span class="gallery-caption"><span>Bath</span><em>Green and gold ease</em></span>
           </button>
+
+          <button class="gallery-tile gallery-tall" type="button" data-lightbox-open data-src="./Decor asset 1 angle 2.jpeg" data-tag="Dining & Ambiance" data-title="Warmth in every layer" data-alt="Dining space styled with curated art and natural textures">
+            <img src="./Decor asset 1 angle 2.jpeg" alt="Dining space styled with curated art and natural textures" width="1080" height="1920" loading="lazy" decoding="async" style="object-position: 50% 50%" />
+            <span class="gallery-caption"><span>Dining</span><em>Warmth in every layer</em></span>
+          </button>
+
+          <button class="gallery-tile gallery-tall" type="button" data-lightbox-open data-src="./decor asset 2.jpeg" data-tag="Living & Styling" data-title="Considered everyday ease" data-alt="Living space styled with bespoke accents and warm neutrals">
+            <img src="./decor asset 2.jpeg" alt="Living space styled with bespoke accents and warm neutrals" width="1080" height="1920" loading="lazy" decoding="async" style="object-position: 50% 50%" />
+            <span class="gallery-caption"><span>Living</span><em>Considered everyday ease</em></span>
+          </button>
         </div>
       </section>
 
@@ -142,7 +151,7 @@
 
     <footer class="brand-footer">
       <a class="brand-kambili-link" href="index.html">Kambili &amp; Co</a>
-      <p>Studio by Kambili</p>
+      <p>Studio Kambili</p>
       <a href="styled-by-kambili.html">Explore Styled by Kambili</a>
     </footer>
 
