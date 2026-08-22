@@ -20,18 +20,34 @@
       />
     </noscript>
     <link rel="preload" as="image" href="./img/fashion-hero.webp" type="image/webp" fetchpriority="high" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2.9" />
   </head>
   <body class="brand-page styled-page">
-    <a class="back-nav" href="index.html" aria-label="Back to Kambili and Co home">
-      <span class="back-nav-arrow" aria-hidden="true"></span>
-      <span class="back-nav-label">Home</span>
-    </a>
+    <div class="lightbox" data-lightbox aria-hidden="true">
+      <button class="lightbox-backdrop" type="button" data-lightbox-close aria-label="Close image"></button>
+      <div class="lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+        <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close">×</button>
+        <figure class="lightbox-figure">
+          <div class="lightbox-image-wrap">
+            <img data-lightbox-image src="" alt="" decoding="async" />
+          </div>
+          <figcaption class="lightbox-caption-bar">
+            <p class="eyebrow" data-lightbox-tag></p>
+            <h3 id="lightbox-caption" data-lightbox-title></h3>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
 
     <header class="brand-header">
-      <a class="brand-kambili-link" href="index.html">Kambili &amp; Co</a>
+      <a class="brand-kambili-link" href="index.html" aria-label="Back to Kambili &amp; Co home">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <span>Home</span>
+      </a>
       <a class="brand-title" href="styled-by-kambili.html"><span>Styled by</span> Kambili</a>
-      <a class="brand-book-link" href="https://calendly.com/styledbykambili/30min?month=2026-08" target="_blank" rel="noreferrer">Book a session</a>
+      <a class="brand-book-link" href="https://calendly.com/styledbykambili/30min?month=2026-08" target="_blank" rel="noreferrer">
+        <span>Book a session</span>
+      </a>
     </header>
 
     <main>
@@ -79,6 +95,54 @@
         </div>
       </section>
 
+      <section class="bridal-gallery section-space" aria-labelledby="bridal-gallery-title">
+        <div class="bridal-gallery-header">
+          <div>
+            <p class="eyebrow">Bridal portfolio</p>
+            <h2 id="bridal-gallery-title">Moments of <em>pure presence.</em></h2>
+          </div>
+          <p>Every angle, every texture, every considered detail — captured in natural light.</p>
+        </div>
+
+        <div class="bridal-deck">
+          <button
+            class="bridal-card"
+            type="button"
+            data-lightbox-open
+            data-src="./Wedss .PNG"
+            data-tag="Bridal Styling"
+            data-title="The ceremony silhouette"
+            data-alt="Editorial bridal moment in full silhouette"
+          >
+            <span class="bridal-card-frame bridal-frame-wide">
+              <img src="./Wedss .PNG" alt="Editorial bridal moment in full silhouette" width="1536" height="1024" loading="lazy" decoding="async" />
+            </span>
+            <span class="bridal-card-meta">
+              <span class="bridal-card-tag">Bridal Styling</span>
+              <em>The ceremony silhouette</em>
+            </span>
+          </button>
+
+          <button
+            class="bridal-card"
+            type="button"
+            data-lightbox-open
+            data-src="./Weeds .PNG"
+            data-tag="Bridal Styling"
+            data-title="Atmosphere & movement"
+            data-alt="Bridal aesthetic and graceful movement"
+          >
+            <span class="bridal-card-frame bridal-frame-standard">
+              <img src="./Weeds .PNG" alt="Bridal aesthetic and graceful movement" width="1448" height="1086" loading="lazy" decoding="async" />
+            </span>
+            <span class="bridal-card-meta">
+              <span class="bridal-card-tag">Bridal Styling</span>
+              <em>Atmosphere &amp; movement</em>
+            </span>
+          </button>
+        </div>
+      </section>
+
       <section class="process-section section-space" aria-labelledby="process-title">
         <p class="eyebrow">Our process</p>
         <h2 id="process-title">From the first spark to the <em>finished feeling.</em></h2>
@@ -100,7 +164,9 @@
     <footer class="brand-footer">
       <a class="brand-kambili-link" href="index.html">Kambili &amp; Co</a>
       <p>Styled by Kambili</p>
-      <a href="studio-kambili.html">Explore Studio by Kambili</a>
+      <a href="studio-kambili.html">Explore Studio Kambili</a>
     </footer>
+
+    <script src="script.js" defer></script>
   </body>
 </html>

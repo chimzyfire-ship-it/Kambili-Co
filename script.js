@@ -79,24 +79,13 @@ const openLightbox = (trigger) => {
   const title = trigger.getAttribute('data-title') || '';
 
   lightboxImage.alt = alt;
+  lightboxImage.src = src;
   if (lightboxTag) lightboxTag.textContent = tag;
   if (lightboxTitle) lightboxTitle.textContent = title;
 
   lightbox.classList.add('is-open');
   lightbox.setAttribute('aria-hidden', 'false');
   document.body.classList.add('lightbox-open');
-
-  const show = () => {
-    lightboxImage.src = src;
-  };
-
-  if ('decode' in Image.prototype) {
-    const preload = new Image();
-    preload.src = src;
-    preload.decode().then(show).catch(show);
-  } else {
-    show();
-  }
 };
 
 const closeLightbox = () => {
@@ -104,13 +93,51 @@ const closeLightbox = () => {
   lightbox.classList.remove('is-open');
   lightbox.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('lightbox-open');
-  if (lightboxImage) {
-    lightboxImage.removeAttribute('src');
-    lightboxImage.alt = '';
-  }
+  window.setTimeout(() => {
+    if (!lightbox.classList.contains('is-open') && lightboxImage) {
+      lightboxImage.removeAttribute('src');
+      lightboxImage.alt = '';
+    }
+  }, 400);
 };
 
 initSplash();
+
+/* Lightweight dual-layer rose parallax (GPU only, rAF throttled) */
+const initRoseParallax = () => {
+  const field = document.querySelector('[data-rose-field]');
+  if (!field) return;
+
+  const petals = field.querySelector('[data-rose-layer="petals"]');
+  const border = field.querySelector('[data-rose-layer="border"]');
+  if (!petals || !border) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  let ticking = false;
+  let latestY = window.scrollY || 0;
+
+  const paint = () => {
+    const y = latestY;
+    // Subtle depth only — impressive without jank
+    petals.style.transform = `translate3d(0, ${y * 0.11}px, 0)`;
+    border.style.transform = `translate3d(0, ${y * 0.05}px, 0)`;
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    latestY = window.scrollY || 0;
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(paint);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  paint();
+};
+
+initRoseParallax();
 
 studioOpeners.forEach((btn) => {
   btn.setAttribute('aria-expanded', 'false');
@@ -134,6 +161,36 @@ document.addEventListener('keydown', (event) => {
   if (lightbox?.classList.contains('is-open')) closeLightbox();
   else closeStudios();
 });
+
+/* High-performance video viewport autoplay/pause observer */
+const initMomentVideo = () => {
+  const video = document.querySelector('.moment-cinematic-video');
+  if (!video) return;
+
+  video.muted = true;
+  video.defaultMuted = true;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {});
+            }
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '80px 0px' }
+    );
+    observer.observe(video);
+  }
+};
+
+initMomentVideo();
 
 if (year) year.textContent = String(new Date().getFullYear());
 
