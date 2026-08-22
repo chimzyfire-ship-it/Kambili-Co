@@ -192,7 +192,52 @@ const initMomentVideo = () => {
 
 initMomentVideo();
 
-if (year) year.textContent = String(new Date().getFullYear());
+// Dynamic Copyright Years on all pages
+const allYearEls = document.querySelectorAll('[data-year]');
+allYearEls.forEach((el) => {
+  el.textContent = String(new Date().getFullYear());
+});
+
+// Interactive Newsletter Subscriptions
+const newsletterForms = document.querySelectorAll('[data-newsletter-form]');
+newsletterForms.forEach((nForm) => {
+  nForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = nForm.querySelector('input[type="email"]');
+    const feedback = nForm.querySelector('[data-newsletter-feedback]');
+    const submitBtn = nForm.querySelector('button[type="submit"]');
+    if (!input || !input.value.trim()) return;
+
+    if (feedback) {
+      feedback.textContent = 'Thank you for joining our private circle.';
+      feedback.classList.add('is-visible');
+    }
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Joined</span> ✓';
+    }
+    input.value = '';
+
+    window.setTimeout(() => {
+      if (feedback) {
+        feedback.classList.remove('is-visible');
+      }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Join</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+      }
+    }, 4500);
+  });
+});
+
+// Smooth Back to Top
+const backToTopBtns = document.querySelectorAll('.back-to-top');
+backToTopBtns.forEach((btn) => {
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
 
 form?.addEventListener('submit', (event) => {
   event.preventDefault();
