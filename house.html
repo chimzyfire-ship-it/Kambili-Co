@@ -25,7 +25,6 @@
     </noscript>
     <link rel="preload" as="image" href="./bg-beige-rose-petals.jpg" fetchpriority="high" />
     <link rel="preload" as="image" href="./bg-beige-rose-border.jpg" fetchpriority="high" />
-    <link rel="preload" as="image" href="./img/house-evening-accessories.webp" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css?v=3.5" />
     <style>
       /* Critical Burgundy Footer Protection */
@@ -111,7 +110,16 @@
 
       <main id="main-content">
         <section class="hero hero-feature" id="top" aria-labelledby="hero-heading">
-          <img class="hero-feature-image" src="./img/house-evening-accessories.webp" alt="Fuchsia evening shoes and a satin clutch with a crystal clasp, lit against a dark backdrop" width="1920" height="1277" decoding="async" fetchpriority="high" />
+          <!-- Photograph by Taiye Salawu, Pexels License. https://www.pexels.com/photo/34419122/ -->
+          <img
+            class="hero-feature-image"
+            src="./img/house-crimson-1920.webp"
+            srcset="./img/house-crimson-960.webp 960w, ./img/house-crimson-1920.webp 1920w, ./img/house-crimson-3200.webp 3200w"
+            sizes="(max-width: 820px) and (orientation: landscape) 62vw, (max-width: 820px) 100vw, 72vw"
+            alt="A seated model in a textured crimson dress and pleated headwrap against a carved stone wall"
+            width="1920" height="1536"
+            decoding="async" fetchpriority="high"
+          />
           <div class="hero-feature-copy">
             <p class="eyebrow">Welcome</p>
             <h1 id="hero-heading">Life, <em>beautifully</em> considered.</h1>

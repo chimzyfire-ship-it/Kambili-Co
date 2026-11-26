@@ -781,7 +781,7 @@ button { color: inherit; cursor: pointer; border: 0; background: none; }
 .hero-feature-image {
   position: absolute; inset: 0 0 0 auto; width: 72%; height: 100%;
   object-fit: cover;
-  object-position: 50% 82%;
+  object-position: 58% 26%;
 }
 .hero-feature-copy {
   position: relative; z-index: 2;
@@ -2897,7 +2897,6 @@ h2 {
     position: static;
     width: 100%;
     height: clamp(12rem, 34svh, 25rem);
-    object-position: 50% 82%;
   }
   .hero-feature-copy {
     width: 100%;
