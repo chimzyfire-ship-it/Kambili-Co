@@ -1,0 +1,139 @@
+/* The seam and plaque sit at these coordinates in the founder's collage. */
+.entry {
+  --seam: 43.45%;
+  --plaque-x: 49.12%;
+  --plaque-y: 52.31%;
+  position: relative;
+  isolation: isolate;
+  height: 100vh;
+  height: 100svh;
+  min-height: 19rem;
+  background: #582828;
+  color: #fffaf3;
+}
+
+.is-loading .entry { visibility: hidden; }
+
+.entry-doors {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: var(--seam) 1fr;
+}
+
+.entry-side {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(1.1rem, 4vw, 4.5rem);
+  padding-bottom: max(env(safe-area-inset-bottom), clamp(2rem, 6vh, 4.5rem));
+  background: linear-gradient(to top, rgb(17 11 8 / 64%), transparent 34%);
+}
+
+.entry-fashion {
+  grid-column: 2;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.entry-caption { position: relative; }
+.entry-caption > span { display: block; }
+
+.entry-discipline {
+  margin-bottom: .3rem;
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.entry-name {
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 3.25vw, 3.7rem);
+  font-weight: 500;
+  line-height: 1.05;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 20%);
+}
+
+.entry-house {
+  position: absolute;
+  z-index: 1;
+  top: var(--plaque-y);
+  left: var(--plaque-x);
+  transform: translate(-50%, -50%);
+  width: 31.8%;
+  aspect-ratio: 1048 / 332;
+  background: #582828 url('./img/entry-wordmark.webp') center / 100% 100% no-repeat;
+}
+
+.entry-invitation {
+  position: absolute;
+  top: calc(100% - 1px);
+  inset-inline: 0;
+  padding: 0 .4rem .8rem;
+  background: #582828;
+  text-align: center;
+  font-size: .875rem;
+  letter-spacing: .06em;
+}
+
+.entry-doors a:focus-visible {
+  outline: 2px solid #fffaf3;
+  outline-offset: -5px;
+}
+
+.entry-doors a:focus-visible .entry-name,
+.entry-house:focus-visible .entry-invitation {
+  text-decoration: underline;
+  text-underline-offset: .24em;
+}
+
+@media (min-aspect-ratio: 22/17) {
+  .entry {
+    background: #582828 url('./img/house-collage.webp') center var(--plaque-y) / cover no-repeat;
+  }
+}
+
+/* On tall screens, frame each photograph independently to keep the face and the place setting in view. */
+@media (max-aspect-ratio: 22/17) {
+  .entry-side { background-size: cover; }
+  .entry-interiors {
+    background-image: linear-gradient(to top, rgb(17 11 8 / 68%), transparent 35%), url('./img/entry-tablescape.webp');
+    background-position: center, 44% center;
+  }
+  .entry-fashion {
+    background-image: linear-gradient(to top, rgb(17 11 8 / 68%), transparent 35%), url('./img/entry-portrait.webp');
+    background-position: center, 65% 38%;
+  }
+  .entry-house {
+    left: 50%;
+    width: clamp(13rem, 54vw, 23rem);
+  }
+}
+
+@media (max-width: 30rem) {
+  .entry-name span { display: block; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .entry-side::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgb(31 16 12 / 23%);
+    opacity: 0;
+    transition: opacity .35s ease;
+    pointer-events: none;
+  }
+  .entry-doors:has(.entry-side:hover) .entry-side:not(:hover)::before { opacity: 1; }
+  .entry-side:hover .entry-name,
+  .entry-house:hover .entry-invitation {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .24em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-side::before { transition: none; }
+}
