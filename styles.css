@@ -763,6 +763,10 @@ button { color: inherit; cursor: pointer; border: 0; background: none; }
   font-weight: 400;
 }
 .hero-feature {
+  --hero-ground: #160e0e;
+  --hero-ivory: #fff6ea;
+  color: var(--hero-ivory);
+  background: var(--hero-ground);
   position: relative;
   min-height: min(710px, calc(100svh - 120px));
   overflow: hidden;
@@ -772,12 +776,12 @@ button { color: inherit; cursor: pointer; border: 0; background: none; }
 .hero-feature::after {
   content: "";
   position: absolute; z-index: 1; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, rgba(251,250,251,.96) 0%, rgba(251,250,251,.88) 28%, rgba(251,250,251,.3) 49%, transparent 67%);
+  background: linear-gradient(90deg, var(--hero-ground) 30%, transparent 61%);
 }
 .hero-feature-image {
-  position: absolute; inset: 0; width: 100%; height: 100%;
+  position: absolute; inset: 0 0 0 auto; width: 72%; height: 100%;
   object-fit: cover;
-  object-position: 62% 28%;
+  object-position: 50% 82%;
 }
 .hero-feature-copy {
   position: relative; z-index: 2;
@@ -786,6 +790,8 @@ button { color: inherit; cursor: pointer; border: 0; background: none; }
   display: flex; flex-direction: column; justify-content: center;
 }
 .hero-feature-copy .eyebrow { margin-bottom: 28px; }
+.hero-feature .hero-intro,
+.hero-feature-copy .eyebrow { color: #ecdbcf; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 16px; }
 .hero-book-button,
 .booking-button,
@@ -844,6 +850,17 @@ button { color: inherit; cursor: pointer; border: 0; background: none; }
     0 1px 0 rgba(255, 255, 255, .7) inset,
     0 14px 32px rgba(61, 26, 26, .12);
 }
+
+.hero-feature .hero-book-button {
+  background: var(--hero-ivory);
+  color: var(--hero-ground);
+}
+.hero-feature .hero-studios-button {
+  color: var(--hero-ivory);
+  background: transparent;
+  border: 1px solid rgb(255 246 234 / 55%);
+}
+.hero-feature .hero-studios-button:hover { background: rgb(255 246 234 / 12%); }
 
 /* —— Introduction (rose field window) —— */
 .introduction {
@@ -2873,68 +2890,32 @@ h2 {
       0 1px 0 rgba(255, 255, 255, .4) inset,
       0 14px 40px rgba(61, 26, 26, .12);
   }
-  .hero-feature::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(251, 247, 242, .08) 0%,
-        rgba(251, 247, 242, .05) 30%,
-        rgba(245, 238, 230, .48) 58%,
-        rgba(248, 244, 239, .9) 78%,
-        rgba(248, 244, 239, .97) 100%
-      );
-  }
-  .hero-feature::after {
-    display: none;
-  }
+  .hero-feature { min-height: 0; }
+  .hero-feature::after { display: none; }
   .hero-feature-image {
-    position: absolute;
-    inset: 0;
+    display: block;
+    position: static;
     width: 100%;
-    height: 100%;
-    max-height: none;
-    aspect-ratio: auto;
-    object-fit: cover;
-    object-position: 78% 20%;
-    order: unset;
+    height: clamp(12rem, 34svh, 25rem);
+    object-position: 50% 82%;
   }
   .hero-feature-copy {
-    position: relative;
-    z-index: 2;
-    left: auto;
-    right: auto;
-    bottom: auto;
     width: 100%;
-    max-width: none;
-    min-height: min(75svh, 640px);
-    padding: 24px 20px 26px;
-    order: unset;
-    background: transparent;
-    justify-content: flex-end;
-    color: var(--burgundy);
+    padding: 24px 20px 28px;
   }
-  .hero-feature-copy .eyebrow {
-    margin-bottom: 10px;
-    color: rgba(107, 58, 58, .78);
-  }
+  .hero-feature-copy .eyebrow { margin-bottom: 10px; }
   .hero h1 {
     max-width: 10.5ch;
     font-size: clamp(38px, 10.5vw, 50px);
     line-height: 1.02;
     letter-spacing: -.02em;
-    color: var(--burgundy);
+    color: var(--hero-ivory);
   }
   .hero-intro {
     max-width: 30ch;
     margin: 10px 0 18px;
     font-size: 13.5px;
     line-height: 1.6;
-    color: rgba(107, 58, 58, .92);
   }
   .hero-actions {
     display: flex;
@@ -3603,7 +3584,6 @@ h2 {
   .announcement-bar p { font-size: 7px; letter-spacing: .08em; }
   .hero h1 { font-size: 34px; max-width: 10.5ch; }
   .hero-intro { font-size: 13px; margin: 10px 0 16px; }
-  .hero-feature-image { object-position: 80% 20%; }
   .introduction-frame h2 { font-size: 30px; }
   .studio-card h3 { font-size: 26px; }
   .mosaic-caption em { font-size: 14px; }
@@ -3617,7 +3597,8 @@ h2 {
     min-height: 100svh;
     margin: 8px;
   }
-  .hero-feature-image { object-position: 70% 28%; }
+  .hero-feature-image { position: absolute; width: 62%; height: 100%; }
+  .hero-feature::after { display: block; background: linear-gradient(90deg, var(--hero-ground) 39%, transparent 67%); }
   .hero-feature-copy {
     min-height: 100svh;
     padding: 18px 22px 22px;
