@@ -66,15 +66,23 @@
   background: #582828 url('./img/entry-wordmark.webp') center / 100% 100% no-repeat;
 }
 
-.entry-invitation {
+.entry-house::after {
+  content: "";
   position: absolute;
-  top: calc(100% - 1px);
-  inset-inline: 0;
-  padding: 0 .4rem .8rem;
-  background: #582828;
-  text-align: center;
-  font-size: .875rem;
-  letter-spacing: .06em;
+  left: 50%;
+  bottom: 9%;
+  width: 1.5rem;
+  height: 1px;
+  background: #fff6e8;
+  opacity: .7;
+  transform: translateX(-50%);
+  transition: width .25s ease, opacity .25s ease;
+}
+
+.entry-house:focus-visible::after,
+.entry-house:active::after {
+  width: 24%;
+  opacity: 1;
 }
 
 .entry-doors a:focus-visible {
@@ -82,8 +90,7 @@
   outline-offset: -5px;
 }
 
-.entry-doors a:focus-visible .entry-name,
-.entry-house:focus-visible .entry-invitation {
+.entry-doors a:focus-visible .entry-name {
   text-decoration: underline;
   text-underline-offset: .24em;
 }
@@ -106,8 +113,9 @@
     background-position: center, 65% 38%;
   }
   .entry-house {
+    top: 70%;
     left: 50%;
-    width: clamp(13rem, 54vw, 23rem);
+    width: clamp(9.5rem, 38vw, 14rem);
   }
 }
 
@@ -126,8 +134,9 @@
     pointer-events: none;
   }
   .entry-doors:has(.entry-side:hover) .entry-side:not(:hover)::before { opacity: 1; }
-  .entry-side:hover .entry-name,
-  .entry-house:hover .entry-invitation {
+  .entry-house:hover { filter: brightness(1.12); }
+  .entry-house:hover::after { width: 24%; opacity: 1; }
+  .entry-side:hover .entry-name {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: .24em;
@@ -135,5 +144,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .entry-side::before { transition: none; }
+  .entry-side::before,
+  .entry-house::after { transition: none; }
 }
