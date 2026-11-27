@@ -145,23 +145,28 @@
   }
 }
 
-/* Phone panels have enough width for the intact plate and portrait crops. */
+/* Use the full, uninterrupted Studio exposure from the founder’s collage.
+   The card sits at its right edge. Reserve the caption space above it. */
 @media (max-width: 600px) and (orientation: portrait) {
-  .entry-doors {
-    grid-template: 43% 57% / 1fr;
-  }
+  .entry { --seam: 48%; }
   .entry-interiors {
-    grid-area: 1 / 1;
-    background-image: linear-gradient(140deg, rgb(17 11 8 / 60%), transparent 46%), url('./img/studio-place-card.webp');
-    background-position: center, right 65%;
-    padding: max(1.25rem, env(safe-area-inset-top)) 1.25rem;
+    background-image: linear-gradient(145deg, rgb(17 11 8 / 58%), transparent 42%), url('./img/studio-setting-portrait.webp');
+    background-position: center, right center;
+    background-size: cover, auto 100%;
+    background-repeat: no-repeat;
+    padding: max(1.25rem, env(safe-area-inset-top)) 1rem;
   }
   .entry-interiors::after { content: none; }
-  .entry-fashion {
-    grid-area: 2 / 1;
-    background-position: center, 50% 20%;
+  .entry-fashion { padding-inline: 1rem; }
+  /* Align the house link with the plaque printed on the original image.
+     Its width covers the printed edge while keeping the wordmark compact. */
+  .entry-house {
+    top: var(--plaque-y);
+    width: calc(4% + 26.6svh);
+    height: 13.3svh;
+    min-height: 44px;
+    background-size: min(82%, 12rem) auto;
   }
-  .entry-house { top: 43%; }
 }
 
 /* Keep the horizontal doors on short landscape phones. */
